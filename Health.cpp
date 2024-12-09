@@ -12,7 +12,7 @@ void Health::InitHealth(){
 	healthBackground.setSize(sf::Vector2f(105, 25));//rylee
 	healthBackground.setOrigin(healthBackground.getSize() * 0.5f);//rylee
 	healthBackground.setFillColor(sf::Color(128, 128, 128, 128));//rylee
-	healthBackground.setPosition(float(maths.width) * 0.5f, float(maths.height) * 0.025f);//rylee
+	healthBackground.setPosition(healthForeground.getPosition());//rylee
 }
 void Health::CheckHealth(){
 
