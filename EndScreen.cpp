@@ -26,7 +26,7 @@ EndScreen::~EndScreen(){
 
 
 }
-void EndScreen::Render(sf::RenderWindow& target){
+sf::Text EndScreen::GetEndText(){
 
-	target.draw(endText);//Jake
+	return endText;
 }
