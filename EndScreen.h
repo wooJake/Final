@@ -22,5 +22,5 @@ public:
 	EndScreen();
 	~EndScreen();
 
-	void Render(sf::RenderWindow& target);
+	sf::Text GetEndText();
 };
