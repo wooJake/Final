@@ -17,7 +17,7 @@ void Enemies::SpawnEnemies(float dt, std::default_random_engine rand_eng) {
 		std::uniform_real_distribution<float> randX(0.0f, float(maths.width));//Jake
 		std::uniform_real_distribution<float> randY(0.0f, float(maths.height));//Jake
 		std::uniform_int_distribution<sf::Uint32> randColor(0, 0xFF);//Jake
-		std::uniform_real_distribution<float> randRadi(5.0f, 25.0f);//Jake
+		std::uniform_real_distribution<float> randRadi(7.5f, 32.0f);//Jake
 		std::uniform_int_distribution<unsigned int> randShape(4, 12);//Jake
 
 		std::uniform_int_distribution<unsigned int> randHealth(0, 5);//rylee
