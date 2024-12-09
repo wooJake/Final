@@ -139,13 +139,6 @@ void Enemies::Update(float dt, std::default_random_engine rand_eng, sf::CircleSh
 	WrapWorld();//Jake
 	HitShip(ship, health);//Jake
 }
-void Enemies::Render(sf::RenderWindow& target){
-
-	for (int i = 0; i < asteroids.size(); ++i) {//Jake
-
-		target.draw(asteroids.at(i)->asteroidShape);//Jake
-	}
-}
 std::vector<Rock*>& Enemies::GetEnemies(){
 
 	return asteroids;//Jake
