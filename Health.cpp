@@ -46,8 +46,11 @@ void Health::Update(){
 
 	CheckHealth();//Jake
 }
-void Health::Render(sf::RenderWindow& target){
+sf::RectangleShape Health::GetHealthForeground() {
 
-	target.draw(healthBackground);//rylee
-	target.draw(healthForeground);//rylee
+	return healthForeground;//Jake
+}
+sf::RectangleShape Health::GetHealthBackground() {
+
+	return healthBackground;//Jake
 }
