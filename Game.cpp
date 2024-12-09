@@ -87,7 +87,7 @@ void Game::Render(){
 
 	if (health.GetHealth() <= 0) {//Jake
 
-		endscreen.Render(*window);//Jake
+		window->draw(endscreen.GetEndText());
 	}
 	window->display();//rylee
 }
