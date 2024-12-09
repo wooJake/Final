@@ -53,13 +53,7 @@ void Torpedo::HitAsteroid(std::vector<Rock*>& asteroids, unsigned int& score, st
 
 		for (int j = 0; j < asteroids.size(); ++j) {//Jake
 
-			sf::Vector2f asteroidPos = asteroids.at(j)->asteroidShape.getPosition();//Jake
-			float dx = asteroidPos.x - torpedoPos.x;//Jake
-			float dy = asteroidPos.y - torpedoPos.y;//Jake
-			float dist = dx * dx + dy * dy;//Jake
-			float rad = torpedo.at(i)->torpedoShape.getRadius() + asteroids.at(j)->asteroidShape.getRadius();//Jake
-
-			if (dist <= rad * rad) {//Jake
+			if (torpedo.at(i)->torpedoShape.getGlobalBounds().intersects(asteroids.at(j)->asteroidShape.getGlobalBounds()) {//Jake
 
 				score = score + (50 - asteroids.at(j)->asteroidShape.getRadius());//Jake
 
