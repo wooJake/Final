@@ -61,7 +61,7 @@ void Torpedo::HitAsteroid(std::vector<Rock*>& asteroids, unsigned int& score, st
 
 			if (dist <= rad * rad) {//Jake
 
-				score = score + 1;//Jake
+				score = score + (50 - asteroids.at(j)->asteroidShape.getRadius());//Jake
 
 				delete torpedo.at(i);//rylee
 				torpedo.erase(torpedo.begin() + i);//Jake
