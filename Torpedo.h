@@ -17,12 +17,14 @@ private:
 
 	std::vector<Missile*> torpedo;//Jake
 
-	float torpedoSpeed = 8.0f;//Jake
-	float torpRadius = 2.25f;//Jake
-	float torpedoAccel = 1.03f;//rylee
+	float torpedoSpeed;//Jake
+	float torpRadius;//Jake
+	float torpedoAccel;//rylee
 
-	float torpedoTimer = 0.0f;//rylee
-	float torpedoTimerMax = 0.5f;//rylee
+	float torpedoTimer;//rylee
+	float torpedoTimerMax;//rylee
+
+	void InitVariables();//Jake
 
 	void FireTorpedo(float dt, sf::CircleShape ship);//Jake
 	void Accelerate();//Jake
