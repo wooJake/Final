@@ -83,7 +83,9 @@ void Game::Render(){
 	}
 
 	window->draw(score.GetScoreText());//Jake
-	health.Render(*window);//Jake
+	
+	window->draw(health.GetHealthBackground());
+	window->draw(health.GetHealthForeground());
 
 	if (health.GetHealth() <= 0) {//Jake
 
