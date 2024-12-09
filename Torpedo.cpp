@@ -1,5 +1,14 @@
 #include "Torpedo.h"
 
+void Torpedo::InitVariables(){
+
+	torpedoSpeed = 8.0f;//Jake
+	torpRadius = 2.25f;//Jake
+	torpedoAccel = 1.03f;//rylee
+
+	torpedoTimer = 0.0f;//rylee
+	torpedoTimerMax = 0.5f;//rylee
+}
 void Torpedo::FireTorpedo(float dt, sf::CircleShape ship){
 
 	torpedoTimer = torpedoTimer + dt;//Jake
@@ -85,6 +94,7 @@ void Torpedo::HitAsteroid(std::vector<Rock*>& asteroids, unsigned int& score, st
 }
 Torpedo::Torpedo(){
 
+	InitVariables();
 }
 Torpedo::~Torpedo(){
 
