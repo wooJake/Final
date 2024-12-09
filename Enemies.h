@@ -36,7 +36,6 @@ public:
 	~Enemies();//Jake
 
 	void Update(float dt, std::default_random_engine rand_eng, sf::CircleShape ship, float& health);//Jake
-	void Render(sf::RenderWindow& target);//Jake
 
 	std::vector<Rock*>& GetEnemies();//Jake
 };
