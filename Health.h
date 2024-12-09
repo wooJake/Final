@@ -27,5 +27,7 @@ public:
 	void ChangeHealth(float health_change);//Jake
 
 	void Update();//Jake
-	void Render(sf::RenderWindow& target);//Jake
+
+	sf::RectangleShape GetHealthForeground();//Jake
+	sf::RectangleShape GetHealthBackground();//Jake
 };
