@@ -15,7 +15,7 @@ void EndScreen::InitEndText(){
 	endText.setOutlineColor(sf::Color::White);//Jake
 	endText.setOutlineThickness(1.0f);//Jake
 	endText.setOrigin(endText.getScale() * 0.5f);//Jake
-	endText.setPosition(maths.width * 0.5f, maths.height * 0.5f);//Jake
+	endText.setPosition(maths.width * 0.5f - endText.getGlobalBounds().width * 0.5f, maths.height * 0.5f );//Jake
 }
 EndScreen::EndScreen(){
 
