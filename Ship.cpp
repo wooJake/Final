@@ -7,6 +7,22 @@ void Ship::InitShip(){
 	ship.setFillColor(sf::Color(0x22FF00FF));//rylee
 	ship.setPosition(maths.width / 2.0f, maths.height / 2.0f);//rylee
 	ship.setPointCount(3);//rylee
+
+	leftThruster.setSize(sf::Vector2f(6.0f, 12.0f));//rylee
+	leftThruster.setOrigin(leftThruster.getSize() * 0.5f);//rylee
+	leftThruster.setFillColor(sf::Color::Magenta);//rylee
+	float theta = ship.getRotation() * maths.degree - (maths.pi * 1.15f);//rylee
+	sf::Vector2f enginePosition = sf::Vector2f(cos(theta), sin(theta));//rylee
+	leftThruster.setPosition(ship.getPosition() + enginePosition * ship.getRadius());//rylee
+	leftThruster.setRotation(ship.getRotation());//rylee
+
+	rightThruster.setSize(sf::Vector2f(6.0f, 12.0f));//rylee
+	rightThruster.setOrigin(rightThruster.getSize() * 0.5f);//rylee
+	rightThruster.setFillColor(sf::Color::Magenta);//rylee
+	theta = ship.getRotation() * maths.degree - (maths.pi * 1.85f);//rylee
+	enginePosition = sf::Vector2f(cos(theta), sin(theta));//rylee
+	rightThruster.setPosition(ship.getPosition() + enginePosition * ship.getRadius());//rylee
+	rightThruster.setRotation(ship.getRotation());//rylee
 }
 void Ship::MoveShip(float friction){
 
@@ -29,6 +45,16 @@ void Ship::MoveShip(float friction){
 	}
 	shipVel = shipVel * friction;//rylee
 	ship.move(shipVel);//rylee//Jake
+
+	theta = ship.getRotation() * maths.degree - (maths.pi * 1.15f);//rylee
+	sf::Vector2f enginePosition = sf::Vector2f(cos(theta), sin(theta));//rylee
+	leftThruster.setPosition(ship.getPosition() + enginePosition * ship.getRadius());//rylee
+	leftThruster.setRotation(ship.getRotation());//rylee
+	
+	theta = ship.getRotation() * maths.degree - (maths.pi * 1.85f);//rylee
+	enginePosition = sf::Vector2f(cos(theta), sin(theta));//rylee
+	rightThruster.setPosition(ship.getPosition() + enginePosition * ship.getRadius());//rylee
+	rightThruster.setRotation(ship.getRotation());//rylee
 }
 void Ship::WrapWorld(){
 
@@ -65,28 +91,15 @@ void Ship::Update(float friction){
 		WrapWorld();//Jake
 	}
 }
-void Ship::Render(sf::RenderWindow& target){
-
-	target.draw(ship);
-
-	sf::RectangleShape engine(sf::Vector2f(6.0f, 12.0f));//rylee
-	engine.setOrigin(engine.getSize() * 0.5f);//rylee
-	engine.setFillColor(sf::Color::Magenta);//rylee
-	float theta = ship.getRotation() * maths.degree - (maths.pi * 1.15f);//rylee
-	sf::Vector2f enginePosition = sf::Vector2f(cos(theta), sin(theta));//rylee
-	engine.setPosition(ship.getPosition() + enginePosition * ship.getRadius());//rylee
-	engine.setRotation(ship.getRotation());//rylee
-
-	target.draw(engine);//rylee
-
-	theta = ship.getRotation() * maths.degree - (maths.pi * 1.85f);//rylee
-	enginePosition = sf::Vector2f(cos(theta), sin(theta));//rylee
-	engine.setPosition(ship.getPosition() + enginePosition * ship.getRadius());//rylee
-	engine.setRotation(ship.getRotation());//rylee
-
-	target.draw(engine);//rylee
-}
 sf::CircleShape Ship::GetShip(){
 
 	return ship;//Jake
+}
+sf::RectangleShape Ship::GetLeftThruster(){
+
+	return leftThruster;//Jake
+}
+sf::RectangleShape Ship::GetRightThruster(){
+
+	return rightThruster;//Jake
 }
