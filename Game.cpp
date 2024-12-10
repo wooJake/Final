@@ -72,11 +72,11 @@ void Game::Render(){
 	window->draw(background);//Jake
 	
 	window->draw(ship.GetShip());
-	if (ship.GetLeftFiring()) {
-	
-		window->draw(ship.GetLeftFlame());
+	if (ship.GetLeftFiring() && health.GetHealth() > 0) {
+
+	window->draw(ship.GetLeftFlame());
 	}
-	if (ship.GetRightFiring()) {
+	if (ship.GetRightFiring() && health.GetHealth() > 0) {
 	
 		window->draw(ship.GetRightFlame());
 	}
