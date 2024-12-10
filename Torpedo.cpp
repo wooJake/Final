@@ -35,6 +35,8 @@ void Torpedo::Accelerate(){
 
 	for (int i = 0; i < torpedo.size(); ++i) {//rylee
 
+		torpedo.at(i)->torpedoShape.setFillColor(sf::Color(torpedo.at(i)->torpedoShape.getFillColor().r + 31, torpedo.at(i)->torpedoShape.getFillColor().g + 31, 255, 255));
+		
 		torpedo.at(i)->torpedoVel = torpedo.at(i)->torpedoVel * torpedoAccel;//Jake
 		torpedo.at(i)->torpedoShape.move(torpedo.at(i)->torpedoVel);//rylee//Jake
 	}
