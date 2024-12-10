@@ -13,6 +13,10 @@ private:
 	Health health;//Jake
 
 	sf::CircleShape ship;//rylee
+	sf::RectangleShape leftThruster;//Jake
+	sf::RectangleShape rightThruster;//Jake
+	sf::RectangleShape leftFlame;//Jake
+	sf::RectangleShape righFlame;//Jake
 
 	float shipRadius = 27.0f;//Jake
 	sf::Vector2f shipVel = sf::Vector2f(0.0f, 0.0f);//rylee
@@ -33,4 +37,6 @@ public:
 	void Render(sf::RenderWindow& target);//Jake
 
 	sf::CircleShape GetShip();//Jake
+	sf::RectangleShape GetLeftThruster();//Jake
+	sf::RectangleShape GetRightThruster();//Jake
 };
