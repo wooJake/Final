@@ -13,18 +13,25 @@ void Ship::InitShip(){
 	leftThruster.setFillColor(sf::Color::Magenta);//rylee
 	float theta = ship.getRotation() * maths.degree - (maths.pi * 1.15f);//rylee
 	sf::Vector2f enginePosition = sf::Vector2f(cos(theta), sin(theta));//rylee
-	leftThruster.setPosition(ship.getPosition() + enginePosition * ship.getRadius());//rylee
-	leftThruster.setRotation(ship.getRotation());//rylee
+
+	leftFlame.setSize(sf::Vector2f(3.0f, 6.0f));//Jake
+	leftFlame.setOrigin(leftFlame.getSize() * 0.5f);//Jake
+	leftFlame.setFillColor(sf::Color(0xFF8800FF));//Jake
 
 	rightThruster.setSize(sf::Vector2f(6.0f, 12.0f));//rylee
 	rightThruster.setOrigin(rightThruster.getSize() * 0.5f);//rylee
 	rightThruster.setFillColor(sf::Color::Magenta);//rylee
 	theta = ship.getRotation() * maths.degree - (maths.pi * 1.85f);//rylee
 	enginePosition = sf::Vector2f(cos(theta), sin(theta));//rylee
-	rightThruster.setPosition(ship.getPosition() + enginePosition * ship.getRadius());//rylee
-	rightThruster.setRotation(ship.getRotation());//rylee
+
+	rightFlame.setSize(sf::Vector2f(3.0f, 6.0f));//Jake
+	rightFlame.setOrigin(rightFlame.getSize() * 0.5f);//Jake
+	rightFlame.setFillColor(sf::Color(0xFF8800FF));//Jake
 }
 void Ship::MoveShip(float friction){
+
+	leftFiring = false;//Jake
+	rightFiring = false;//Jake
 
 	sf::Vector2f origin = ship.getOrigin();//Jake
 	float theta = ship.getRotation() * maths.degree - (maths.pi / 2);//Jake
@@ -34,27 +41,44 @@ void Ship::MoveShip(float friction){
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::W)) {//rylee
 
 		shipVel = shipVel + (facingDir * shipAccel);//rylee
+		leftFiring = true;//Jake
+		rightFiring = true;//Jake
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::A)) {//Jake
 
 		ship.rotate(-shipRotAccel);//Jake
+		rightFiring = true;//Jake
 	}
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::D)) {//Jake
 
 		ship.rotate(shipRotAccel);//Jake
+		leftFiring = true;//Jake
 	}
 	shipVel = shipVel * friction;//rylee
 	ship.move(shipVel);//rylee//Jake
+}
+void Ship::MoveThrusters(){
 
-	theta = ship.getRotation() * maths.degree - (maths.pi * 1.15f);//rylee
+	float theta = ship.getRotation() * maths.degree - (maths.pi * 1.15f);//rylee
 	sf::Vector2f enginePosition = sf::Vector2f(cos(theta), sin(theta));//rylee
 	leftThruster.setPosition(ship.getPosition() + enginePosition * ship.getRadius());//rylee
 	leftThruster.setRotation(ship.getRotation());//rylee
-	
+
+	theta = ship.getRotation() * maths.degree + (maths.pi * 2.5f);//Jake
+	sf::Vector2f flamePos = sf::Vector2f(cos(theta), sin(theta));//Jake
+	leftFlame.setPosition(leftThruster.getPosition() + 8.0f * flamePos);//Jake
+	leftFlame.setRotation(leftThruster.getRotation());//Jake
+
 	theta = ship.getRotation() * maths.degree - (maths.pi * 1.85f);//rylee
 	enginePosition = sf::Vector2f(cos(theta), sin(theta));//rylee
 	rightThruster.setPosition(ship.getPosition() + enginePosition * ship.getRadius());//rylee
 	rightThruster.setRotation(ship.getRotation());//rylee
+
+	rightFlame.setPosition(rightThruster.getPosition() + 8.0f * flamePos);//Jake
+	rightFlame.setRotation(rightThruster.getRotation());//Jake
+
+	rightFlame.setFillColor(sf::Color(255.0f, rightFlame.getFillColor().g + 23, 0, 255));//Jake
+	leftFlame.setFillColor(sf::Color(255.0f, rightFlame.getFillColor().g + 23, 0, 255));//Jake
 }
 void Ship::WrapWorld(){
 
@@ -88,6 +112,7 @@ void Ship::Update(float friction){
 	if (health.GetHealth() > 0) {//Jake
 
 		MoveShip(friction);//Jake
+		MoveThrusters();//Jake
 		WrapWorld();//Jake
 	}
 }
@@ -102,4 +127,20 @@ sf::RectangleShape Ship::GetLeftThruster(){
 sf::RectangleShape Ship::GetRightThruster(){
 
 	return rightThruster;//Jake
+}
+sf::RectangleShape Ship::GetLeftFlame(){
+
+	return leftFlame;
+}
+sf::RectangleShape Ship::GetRightFlame(){
+
+	return rightFlame;
+}
+bool Ship::GetLeftFiring(){
+
+	return leftFiring;
+}
+bool Ship::GetRightFiring(){
+
+	return rightFiring;
 }
