@@ -70,8 +70,18 @@ void Game::Render(){
 	window->clear(sf::Color(0x440088FF));//rylee
 
 	window->draw(background);//Jake
-
-	ship.Render(*window);//Jake
+	
+	window->draw(ship.GetShip());
+	if (ship.GetLeftFiring()) {
+	
+		window->draw(ship.GetLeftFlame());
+	}
+	if (ship.GetRightFiring()) {
+	
+		window->draw(ship.GetRightFlame());
+	}
+	window->draw(ship.GetLeftThruster());
+	window->draw(ship.GetRightThruster());
 
 	for (int i = 0; i < enemies.GetEnemies().size(); ++i) {//Jake
 
